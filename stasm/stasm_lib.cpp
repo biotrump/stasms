@@ -114,7 +114,7 @@ int stasm_open_image_ext(  // extended version of stasm_open_image
     CatchOpenCvErrs();
     try
     {
-        CV_Assert(imgpath && STRNLEN(imgpath, SLEN) < SLEN);
+//        CV_Assert(imgpath && STRNLEN(imgpath, SLEN) < SLEN);
         CV_Assert(multiface == 0 || multiface == 1);
         CV_Assert(minwidth >= 1 && minwidth <= 100);
 

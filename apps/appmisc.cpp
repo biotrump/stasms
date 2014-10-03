@@ -365,6 +365,11 @@ void MkDir(           // create the given directory if it doesn't exist
         const int err =
 #if _MSC_VER // microsoft
             _mkdir(path);
+// Added by Yuji Oyamada, 2013.02.01
+// from here
+#elif __GNUC__
+            mkdir(path, 0777);
+// to here
 #else
             mkdir(path); // TODO some systems want: mkdir(path, 0777);
 #endif

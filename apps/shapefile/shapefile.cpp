@@ -725,8 +725,15 @@ void ProcessShapeFileArg(
 
     strcpy(shapepath, *argv);
     int n = STRNLEN(shapepath, SLEN);
-    if (n < 6 || _stricmp(shapepath + n - 6, ".shape"))
-        Err("Invalid shape file name %s (expected a .shape suffix)", shapepath);
+
+// Modified by Yuji Oyamada, 2013.02.01
+    #if _MSC_VER // microsoft
+        if (n < 6 || _stricmp(shapepath + n - 6, ".shape"))
+            Err("Invalid shape file name %s (expected a .shape suffix)", shapepath);
+    #else
+        if (n < 6 || strcmp(shapepath + n - 6, ".shape"))
+            Err("Invalid shape file name %s (expected a .shape suffix)", shapepath);
+    #endif
 
     nshapes = 0;
     if (argc > 1)
