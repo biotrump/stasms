@@ -72,6 +72,11 @@ ${STASM_BASE_DIR}/stasm/stasm.cpp
 ${STASM_BASE_DIR}/stasm/stasm_lib.cpp
 )
 
+SET(OBJ_STASM_LM
+${STASM_BASE_DIR}/apps/stasm_lm.cpp
+${STASM_BASE_DIR}/apps/appmisc.cpp
+)
+
 SET(OBJ_STASM_CAM
 ${STASM_BASE_DIR}/apps/stasm_cam.cpp
 ${STASM_BASE_DIR}/apps/appmisc.cpp
@@ -148,6 +153,10 @@ FOREACH(var ${EXECUTABLES})
 add_executable(${var} apps/${var}.cpp)
 target_link_libraries(${var} ${STASM_LIB} ${LIBS})
 ENDFOREACH(var)
+
+set(STASMLM_EXE stasm_lm)
+add_executable(${STASMLM_EXE} ${OBJ_STASM_LM})
+target_link_libraries(${STASMLM_EXE} ${STASM_LIB} ${LIBS})
 
 set(STASMCAM_EXE stasm_cam)
 add_executable(${STASMCAM_EXE} ${OBJ_STASM_CAM})

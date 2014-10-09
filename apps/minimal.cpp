@@ -6,10 +6,13 @@
 #include "opencv/highgui.h"
 #include "stasm_lib.h"
 
-int main()
+int main(int argc, char **argv)
 {
-    static const char* const path = "../data/testface.jpg";
-
+    //static const char* const path = "../data/testface.jpg";
+    char path[80] = "../data/testface.jpg";
+	if(argv[1]){
+		strcpy(path, argv[1]);
+	}
     cv::Mat_<unsigned char> img(cv::imread(path, CV_LOAD_IMAGE_GRAYSCALE));
 
     if (!img.data)
